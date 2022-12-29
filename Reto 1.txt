@@ -1,0 +1,46 @@
+ORACLE CLOUD - INSTANCIAS DE APEX - CREAR SERVICIO APEX
+
+----------------------------------------RETO 1 - cloud
+
+------------------------------MODULOS - cloud
+
+--------------------PLANTILLA - cloud/:id
+
+----------GET
+
+SELECT * FROM CLOUD WHERE id=:id
+
+--------------------PLANTILLA - cloud
+
+----------GET
+
+SELECT * FROM CLOUD ORDER BY ID ASC
+
+----------POST
+
+BEGIN
+    INSERT INTO CLOUD(ID, BRAND, MODEL, CATEGORY_ID, NAME)
+    VALUES(:id, :brand, :model, :category_id, :name);
+    :status_code := 201;
+END;
+
+----------PUT
+
+BEGIN
+    UPDATE CLOUD
+    SET
+    BRAND = :brand,
+    MODEL = :model,
+    CATEGORY_ID = :category_id,
+    NAME = :name
+    WHERE ID = :id;
+    :status_code := 201;
+END;
+
+----------DELETE
+
+BEGIN
+    DELETE FROM CLOUD
+    WHERE ID = :id;
+    :status_code := 204;
+END;
